@@ -3,18 +3,20 @@
     public class State : IState
     {
         public int Value { get; set; }
-
-        public int Clamp(int value, int min, int max)
+        
+        public State(int value)
         {
-            if (value.CompareTo(min) < 0) {
-                return min;
-            }
-
-            if (value.CompareTo(max) > 0) {
-                return max;
-            }
+            Value = Helpers.Clamp(value, 0, 100);
+        }
+        
+        public void Increase()
+        {
             
-            return value;
+        }
+
+        public void Decrease()
+        {
+            
         }
     }
 }

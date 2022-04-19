@@ -8,7 +8,7 @@ public class StateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Modules.IState healthState = new State();
+        Modules.IState healthState = new State(100);
     }
 
     // Update is called once per frame
