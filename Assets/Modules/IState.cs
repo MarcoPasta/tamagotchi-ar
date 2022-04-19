@@ -2,13 +2,25 @@
 {
     public interface IState
     {
-        int Value
+        int StateValue
         {
             get;
             set;
         }
 
-        void Increase();
-        void Decrease();
+        int IncreaseFactor
+        {
+            get;
+            set;
+        }
+
+        int DecreaseFactor
+        {
+            get;
+            set;
+        }
+
+        void Increase(int value);
+        void Decrease(int value);
     }
 }

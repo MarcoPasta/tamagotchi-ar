@@ -2,21 +2,33 @@
 {
     public class State : IState
     {
-        public int Value { get; set; }
-        
+        private const int RangeMin = 0;
+        private const int RangeMax = 100;
+
+        private int _stateValue;
+        public int StateValue
+        {
+            get => _stateValue;
+            set => _stateValue = Helpers.Clamp(value, RangeMin, RangeMax);
+        }
+        public int IncreaseFactor { get; set; }
+        public int DecreaseFactor { get; set; }
+
         public State(int value)
         {
-            Value = Helpers.Clamp(value, 0, 100);
+            StateValue = value;
         }
         
-        public void Increase()
+        public void Increase(int value)
         {
-            
+            var valueToIncreaseBy = IncreaseFactor * value + StateValue;
+            StateValue += valueToIncreaseBy;
         }
 
-        public void Decrease()
+        public void Decrease(int value)
         {
-            
+            var valueToDecreaseBy = DecreaseFactor * value + StateValue;
+            StateValue += valueToDecreaseBy;
         }
     }
 }
