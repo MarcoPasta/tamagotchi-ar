@@ -8,6 +8,7 @@
             set;
         }
 
-        int Clamp(int value, int min, int max);
+        void Increase();
+        void Decrease();
     }
 }
