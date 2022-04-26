@@ -1,15 +1,15 @@
 ﻿namespace Modules
 {
-    public class HealthState : BaseState
+    public class HungerState : BaseState
     {
         public override double RangeMin { get; }
         public override double RangeMax { get; }
         
-        public HealthState(double stateValue, double rangeMin, double rangeMax)
+        public HungerState(double stateValue, double rangeMin, double rangeMax)
         {
+            StateValue = stateValue;
             RangeMin = rangeMin;
             RangeMax = rangeMax;
-            StateValue = stateValue;
         }
     }
 }
