@@ -1,8 +1,8 @@
 ﻿namespace Modules
 {
-    public class Helpers
+    public static class Helpers
     {
-        public static int Clamp(int value, int min, int max)
+        public static double Clamp(double value, double min, double max)
         {
             if (value.CompareTo(min) < 0) {
                 return min;
