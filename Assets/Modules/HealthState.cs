@@ -1,6 +1,6 @@
 ﻿namespace Modules
 {
-    public class State : IState
+    public class HealthState : IState
     {
         private const double RangeMin = 0;
         private const double RangeMax = 1.0;
@@ -12,7 +12,7 @@
             set => _stateValue = Helpers.Clamp(value, RangeMin, RangeMax);
         }
 
-        public State(int value)
+        public HealthState(int value)
         {
             StateValue = value;
         }
