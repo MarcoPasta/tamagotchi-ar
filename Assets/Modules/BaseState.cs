@@ -6,26 +6,16 @@ namespace Modules
     {
         public abstract double RangeMin { get; }
         public abstract double RangeMax { get; }
-        public abstract List<IState> Dependents { get; }
+        public abstract List<IStateDependency> Dependencies { get; }
 
         private double _stateValue;
         
-        public double StateValue
+        public double Value
         {
             get => _stateValue;
             set => _stateValue = Helpers.Clamp(value, RangeMin, RangeMax);
         }
 
-        public void Increase(double value, double factor = 1)
-        {
-            var valueToIncreaseBy = factor * value;
-            StateValue += valueToIncreaseBy;
-        }
-
-        public void Decrease(double value, double factor = 1)
-        {
-            var valueToDecreaseBy = factor * value;
-            StateValue -= valueToDecreaseBy;
-        }
+        public abstract void UpdateStateValue();
     }
 }

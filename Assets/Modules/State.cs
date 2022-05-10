@@ -7,14 +7,31 @@ namespace Modules
         public override double RangeMin { get; }
         public override double RangeMax { get; }
         
-        public override List<IState> Dependents { get; }
+        public override List<IStateDependency> Dependencies { get; }
+        public override void UpdateStateValue()
+        {
+            if (Dependencies.Count == 0)
+            {
+                return;
+            }
 
-        public State(double stateValue, double rangeMin, double rangeMax, List<IState> dependents = null)
+            double newStateValue = 0;
+            
+            foreach (IStateDependency stateDependency in Dependencies)
+            {
+                double weightedDependencyValue = stateDependency.State.Value * stateDependency.Weight;
+                newStateValue += weightedDependencyValue;
+            }
+
+            Value = newStateValue;
+        }
+
+        public State(double value, double rangeMin, double rangeMax, List<IStateDependency> dependencies = null)
         {
             RangeMin = rangeMin;
             RangeMax = rangeMax;
-            StateValue = stateValue;
-            Dependents = dependents;
+            Value = value;
+            Dependencies = dependencies;
         }
     }
 }

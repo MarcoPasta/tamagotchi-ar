@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
+﻿using System.Collections.Generic;
 
 namespace Modules
 {
@@ -10,15 +7,14 @@ namespace Modules
         double RangeMin { get; }
         double RangeMax { get; }
 
-        List<IState> Dependents { get; }
+        List<IStateDependency> Dependencies { get; }
 
-        double StateValue
+        double Value
         {
             get;
             set;
         }
-        
-        void Increase(double value, double factor = 1);
-        void Decrease(double value, double factor = 1);
+
+        public void UpdateStateValue();
     }
 }
