@@ -1,9 +1,16 @@
-﻿namespace Modules
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+
+namespace Modules
 {
     public interface IState
     {
         double RangeMin { get; }
         double RangeMax { get; }
+
+        List<IState> Dependents { get; }
 
         double StateValue
         {

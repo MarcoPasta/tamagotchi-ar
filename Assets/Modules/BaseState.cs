@@ -6,7 +6,8 @@ namespace Modules
     {
         public abstract double RangeMin { get; }
         public abstract double RangeMax { get; }
-        
+        public abstract List<IState> Dependents { get; }
+
         private double _stateValue;
         
         public double StateValue
