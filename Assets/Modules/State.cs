@@ -19,7 +19,7 @@ namespace Modules
             
             foreach (IStateDependency stateDependency in Dependencies)
             {
-                double weightedDependencyValue = stateDependency.State.Value * stateDependency.Weight;
+                double weightedDependencyValue = stateDependency.State.Value * stateDependency.Weighting;
                 newStateValue += weightedDependencyValue;
             }
 

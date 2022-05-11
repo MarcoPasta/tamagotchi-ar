@@ -3,12 +3,12 @@
     public class StateDependency : IStateDependency
     {
         public IState State { get; }
-        public double Weight { get; }
+        public double Weighting { get; }
 
-        public StateDependency(IState state, double weight)
+        public StateDependency(IState state, double weighting)
         {
             State = state;
-            Weight = weight;
+            Weighting = weighting;
         }
     }
 }

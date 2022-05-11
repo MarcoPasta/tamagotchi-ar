@@ -3,6 +3,6 @@
     public interface IStateDependency
     {
         public IState State { get; }
-        public double Weight { get; }
+        public double Weighting { get; }
     }
 }
