@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.MainScene.Script
@@ -16,7 +14,7 @@ namespace Game.MainScene.Script
                 return;
             }
         
-            findWebCams();
+            FindWebCams();
 
             Application.RequestUserAuthorization(UserAuthorization.WebCam);
             Debug.Log(Application.HasUserAuthorization(UserAuthorization.WebCam)
@@ -27,12 +25,12 @@ namespace Game.MainScene.Script
         /// <summary>
         /// Iterates through each cam of the device and prints device names as log messages
         /// </summary>
-        void findWebCams() // 
+        static void FindWebCams()
         {
             foreach (var devices in WebCamTexture.devices)
             {
                 Debug.Log("Name: " + devices.name);
             }
         }
-    }   
+    }
 }
