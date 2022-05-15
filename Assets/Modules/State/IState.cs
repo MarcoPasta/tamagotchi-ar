@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Modules
+namespace Modules.State
 {
     /// <summary>
     /// Interface <c>IState</c> defines the contract, which a State must fulfill.

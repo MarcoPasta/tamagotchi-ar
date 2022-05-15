@@ -1,4 +1,4 @@
-﻿namespace Modules
+﻿namespace Modules.State
 {
     /// <summary>
     /// This class implements the <c>IStateDependency</c> interface.

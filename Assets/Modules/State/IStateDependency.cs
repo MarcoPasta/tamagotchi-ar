@@ -1,4 +1,4 @@
-﻿namespace Modules
+﻿namespace Modules.State
 {
     /// <summary>
     /// This interface describes a state dependency, mapping a <c>State</c> and its <c>Weighting</c>. 

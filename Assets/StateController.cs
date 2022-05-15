@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Modules;
+using Modules.State;
 using UnityEngine;
 
 public class StateController : MonoBehaviour
