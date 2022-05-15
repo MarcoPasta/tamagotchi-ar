@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Modules
+namespace Modules.State
 {
     /// <summary>
     /// Class <c>State</c> represents a value between <c>RangeMin</c> and <c>RangeMax</c>, which can be increased, decreased,

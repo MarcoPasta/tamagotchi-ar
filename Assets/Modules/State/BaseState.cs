@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Modules
+namespace Modules.State
 {
     /// <summary>
     /// Class <c>BaseState</c> implements the <c>IState</c> interface with abstract range members,
