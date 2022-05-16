@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 285121471}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5.6438684, y: -2.5310855, z: 11.321194}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1680128951}
   m_RootOrder: 0
@@ -538,6 +538,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c56ee35b7b512e4585cb03a31c6e08a,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4c56ee35b7b512e4585cb03a31c6e08a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4c56ee35b7b512e4585cb03a31c6e08a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4c56ee35b7b512e4585cb03a31c6e08a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9156802
       objectReference: {fileID: 0}
@@ -743,6 +758,7 @@ MonoBehaviour:
   cursorChildObject: {fileID: 285121471}
   objectToPlace: {fileID: 973825779}
   raycastManager: {fileID: 986199277}
+  useCursor: 1
 --- !u!4 &1680128951
 Transform:
   m_ObjectHideFlags: 0
