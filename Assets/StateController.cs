@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Modules.State;
 using Modules.Timestamp;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     private List<IState> _states;
-    private int _minutesPassedSinceLastPlayed = 0;
+    private int _minutesPassedSinceLastPlayed;
     private const double DecreasePerTick = 0.000001;
     
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class StateController : MonoBehaviour
         List<IStateDependency> healthStateDependencies = new List<IStateDependency>
         {
             new StateDependency(hungerState, 0.5), 
-            new StateDependency(happinessState, 0.5), 
+            new StateDependency(happinessState, 0.5)
         };
         
         IState healthState = new State(1.0, 0, 1.0, healthStateDependencies);
@@ -29,10 +30,14 @@ public class StateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (IState state in _states)
+        if (_states == null)
+        {
+            return;
+        }
+        
+        foreach (var state in _states)
         {
             state.UpdateStateValue();
-            Debug.Log(state.Value);
         }
     }
     
@@ -55,18 +60,19 @@ public class StateController : MonoBehaviour
     private void HandleGameReturn()
     {
         _minutesPassedSinceLastPlayed = Timestamp.GetDifferenceInMinutes();
-        foreach (IState state in _states)
-        {
-            if (state.Dependencies.Count > 0)
-            {
-                continue;
-            }
 
+        if (_states == null)
+        {
+            return;
+        }
+        
+        foreach (var state in _states)
+        {
             state.Value -= CalculateStateValueDecrease(_minutesPassedSinceLastPlayed);
         }
     }
 
-    private double CalculateStateValueDecrease(int minutes)
+    private static double CalculateStateValueDecrease(int minutes)
     {
         return minutes * 60 * 60 * DecreasePerTick;
     }

@@ -14,9 +14,8 @@ namespace Modules.Timestamp
         /// </summary>
         public static void Save()
         {
-            // TODO: save datetime as unix timestamp
-            string now = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            PlayerPrefs.SetString("quit_at", now);
+            DateTime now = DateTime.Now;
+            PlayerPrefs.SetString("quit_at", Convert.ToString(now, new CultureInfo("de-DE")));
             PlayerPrefs.Save();
         }
 
@@ -26,7 +25,8 @@ namespace Modules.Timestamp
         /// <returns></returns>
         private static string Load()
         {
-            return PlayerPrefs.GetString("quit_at", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+            string defaultValue = Convert.ToString(DateTime.Now, new CultureInfo("de-DE"));
+            return PlayerPrefs.GetString("quit_at", defaultValue);
         }
 
         /// <summary>
@@ -36,10 +36,9 @@ namespace Modules.Timestamp
         public static int GetDifferenceInMinutes()
         {
             DateTime now = DateTime.Now;
-            long lastTimePlayed = Convert.ToInt64(Load());
-            DateTime lastTimePlayedAsDate = DateTime.FromBinary(lastTimePlayed);
+            DateTime lastTimePlayed = DateTime.Parse(Load(), new CultureInfo("de-DE"));
 
-            TimeSpan difference = now.Subtract(lastTimePlayedAsDate);
+            TimeSpan difference = now.Subtract(lastTimePlayed);
             return difference.Minutes;
         }
     }
