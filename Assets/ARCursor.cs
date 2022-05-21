@@ -11,6 +11,8 @@ public class ARCursor : MonoBehaviour
     public ARRaycastManager raycastManager;
     public Camera mainCamera;
 
+    private Transform cursor; 
+    
     public bool useCursor = true; 
     // Start is called before the first frame update
     private void Start()
@@ -30,7 +32,7 @@ public class ARCursor : MonoBehaviour
         {
             if (useCursor)
             {
-                Instantiate(objectToPlace, transform.position, transform.rotation);
+                Instantiate(objectToPlace, cursor.position, cursor.rotation);
             }
             else
             {
@@ -51,8 +53,8 @@ public class ARCursor : MonoBehaviour
         raycastManager.Raycast(screenPosition, hits, TrackableType.Planes);
         if (hits.Count > 0)
         {
-            transform.position = hits[0].pose.position;
-            transform.rotation = hits[0].pose.rotation;
+            cursor.position = hits[0].pose.position;
+            cursor.rotation = hits[0].pose.rotation;
         }
     }
 }
