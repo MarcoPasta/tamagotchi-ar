@@ -23,7 +23,7 @@ namespace Modules.State
         /// </summary>
         public override void UpdateStateValue()
         {
-            if (Dependencies.Count == 0)
+            if (Dependencies == null  || Dependencies.Count == 0)
             {
                 return;
             }
