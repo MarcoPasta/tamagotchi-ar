@@ -32,20 +32,20 @@ public class ARCursor : MonoBehaviour
         if (Input.touchCount <= 0 || Input.GetTouch(0).phase != TouchPhase.Began) return;
         if (useCursor)
         {
-            // create object
+            // // create object
             Instantiate(objectToPlace, cursor.position, cursor.rotation);
         }
-        // else
-        // {
-        //     // create list for raycasthits
-        //     var hits = new List<ARRaycastHit>();
-        //     // send a raycast 
-        //     raycastManager.Raycast(Input.GetTouch(0).position, hits, TrackableType.Planes);
-        //     if (hits.Count > 0)
-        //     {
-        //         Instantiate(objectToPlace, hits[0].pose.position, hits[0].pose.rotation);
-        //     }
-        // }
+        else
+        {
+            // create list for raycasthits
+            var hits = new List<ARRaycastHit>();
+            // send a raycast 
+            raycastManager.Raycast(Input.GetTouch(0).position, hits, TrackableType.Planes);
+            if (hits.Count > 0)
+            {
+                Instantiate(objectToPlace, hits[0].pose.position, hits[0].pose.rotation);
+            }
+        }
     }
 
     private void UpdateCursor()
