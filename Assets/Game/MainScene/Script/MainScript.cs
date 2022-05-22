@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MainScript : MonoBehaviour
+namespace Game.MainScene.Script
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainScript : MonoBehaviour
+    {
+        // Start is called before the first frame update
+        void Start()
         {
             var identifier = SystemInfo.deviceModel;
     
@@ -32,9 +32,10 @@ public class MainScript : MonoBehaviour
         }
 
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }
