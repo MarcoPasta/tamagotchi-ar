@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.MainScene.Script
+namespace Game.MainScene.Scripts
 {
     public class MainScript : MonoBehaviour
     {
