@@ -16,7 +16,7 @@ namespace Game.MainScene.Scripts
         [SerializeField]
         private GameObject placeablePrefab;
 
-        private static List<ARRaycastHit> _raycastHits = new();
+        private static List<ARRaycastHit> _raycastHits = new List<ARRaycastHit>();
 
         private void Awake()
         {
