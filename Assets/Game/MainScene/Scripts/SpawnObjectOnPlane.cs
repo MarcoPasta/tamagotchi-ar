@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -32,8 +30,7 @@ namespace Game.MainScene.Scripts
                 Debug.Log($"Touch occured at position {touchPosition}.");
                 return true;
             }
-            
-            
+
             touchPosition = default;
             Debug.Log($"No touch occured. touchPosition = {touchPosition}");
             return false;
