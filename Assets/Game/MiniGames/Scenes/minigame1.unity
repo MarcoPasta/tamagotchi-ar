@@ -695,7 +695,7 @@ MonoBehaviour:
   - {fileID: 110333318}
   - {fileID: 275021749}
   spawnSpeed: 2
-  moveSpeed: 0.15
+  moveSpeed: 0.25
 --- !u!1 &1802938313
 GameObject:
   m_ObjectHideFlags: 0
