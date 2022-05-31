@@ -10,7 +10,7 @@ public class PlayerJump : MonoBehaviour
         if (Input.touchCount > 0)
         {
             var charPos = transform.position;
-            transform.DOJump(new Vector3(0, charPos.y + 0.04f, charPos.z), 0.01f, 1, 1f);
+            transform.DOJump(new Vector3(0, charPos.y + 0.04f, 1), 0.02f, 1, 0.225f);
         }
     }
 }
