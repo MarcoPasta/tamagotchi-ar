@@ -9,6 +9,9 @@ namespace Game.MiniGames.Scripts
         public float spawnSpeed = 1.0f;
         public float moveSpeed = 0.25f;
         private float _endValue;
+        public float leftEnd = -0.5f;
+        public float randomRightEndStart = -0.9f;
+        public float randomRightEnd = -0.11f;
         private void Start()
         {
             getEndValues();
@@ -17,23 +20,22 @@ namespace Game.MiniGames.Scripts
 
         private void getEndValues()
         {
-            _endValue = groundPlanes[0].transform.position.y + 0.6f;
+            _endValue = groundPlanes[0].transform.position.y + 0.5f;
         }
 
         private void Update()
         {
-            // TODO: get a method to check without position 0
             if (groundPlanes[0].transform.position.y != _endValue) return;
             MovePlates();
             CheckPosition();
-            // moveSpeed += 0.000001f;
+            moveSpeed += 0.000001f;
         }
 
         private void CheckPosition()
         {
             foreach (var plane in groundPlanes)
             {
-                if (plane.transform.position.x < -0.5f)
+                if (plane.transform.position.x < leftEnd)
                 {
                     plane.transform.position = GetRandomPosition();
                 }
@@ -42,7 +44,8 @@ namespace Game.MiniGames.Scripts
         // return a random position to spawn plate at 
         private Vector3 GetRandomPosition()
         {
-            return new Vector3(Random.Range(0.5f, 0.6f), _endValue, 1);
+            var pos = groundPlanes[0].transform.position;
+            return new Vector3(Random.Range(randomRightEndStart, randomRightEnd), _endValue, pos.z);
         }
 
         private void MovePlates()

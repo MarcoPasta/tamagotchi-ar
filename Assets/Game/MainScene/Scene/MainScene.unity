@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feed: {fileID: 1735184835}
   minigame1: {fileID: 1690850696}
-  preChar: {fileID: 0}
+  canvas: {fileID: 1906080064}
 --- !u!4 &747395331
 Transform:
   m_ObjectHideFlags: 0
@@ -1017,7 +1017,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -160.8, y: -15}
+  m_AnchoredPosition: {x: -72.1, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1690850698
@@ -1151,7 +1151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.00001049, y: -15}
+  m_AnchoredPosition: {x: 86.5, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1735184837

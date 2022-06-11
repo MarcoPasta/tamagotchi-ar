@@ -1,16 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerJump : MonoBehaviour
+namespace Game.MiniGames.Scripts
 {
-    void Update()
+    public class PlayerJump : MonoBehaviour
     {
-        if (Input.touchCount > 0)
+        public Transform plane;
+        private float _maxJumpHeight;
+        private float _minJumpHeight;
+        private bool _touchedLastFrame = false;
+
+
+        private void Start()
         {
-            var charPos = transform.position;
-            transform.DOJump(new Vector3(0, charPos.y + 0.04f, 1), 0.02f, 1, 0.225f);
+            _maxJumpHeight = transform.position.y + 0.015f;
+        }
+
+        void Update()
+        {
+            
+            if (_touchedLastFrame && Input.touchCount == 0)
+            {
+                _touchedLastFrame = false;
+            }
+            else if (!_touchedLastFrame && Input.touchCount > 0)
+            {
+                transform.DOJump(new Vector3(0, _maxJumpHeight, plane.position.z), 0.02f, 1, 0.23f);
+                _touchedLastFrame = true;
+            }
+
+            if (Input.GetTouch(0).phase == TouchPhase.Stationary)
+            { 
+                transform.DOJump(new Vector3(0, _maxJumpHeight, plane.position.z), 0.02f, 1, 0.23f);
+            }
+            
         }
     }
 }
