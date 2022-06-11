@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Modules.State;
 using Modules.Timestamp;
 using UnityEngine;
@@ -13,11 +14,12 @@ namespace Game.MainScene.Scripts
 
         readonly IState _hungerState = new State(1.0, 0, 1.0);
         readonly IState _happinessState = new State(1.0, 0, 1.0);
+
+        public GameObject[] foodAssets; 
         
         // Start is called before the first frame update
         void Start()
         {
-
             List<IStateDependency> healthStateDependencies = new List<IStateDependency>
             {
                 new StateDependency(_hungerState, 0.5), 
@@ -83,6 +85,22 @@ namespace Game.MainScene.Scripts
         {
             _hungerState.Value += 0.1;
             Debug.Log("Tamagotchi fed.");
+
+            int index = Random.Range(0, foodAssets.Length);
+            GameObject foodAsset = foodAssets[index];
+
+            foodAsset = Instantiate(foodAsset, foodAsset.transform.position, foodAsset.transform.rotation);
+            Vector3 cameraForward = Camera.main!.transform.forward;
+
+            Sequence foodAnimation = foodAsset.transform.DOJump(
+                cameraForward, 
+                0.08f, 
+                Random.Range(1, 3), 
+                Random.Range(0.5f, 0.7f));
+
+            foodAnimation.OnComplete(() => {
+                Destroy(foodAsset);
+            });
         }
     }
 }
