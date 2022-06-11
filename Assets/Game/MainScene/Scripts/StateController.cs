@@ -89,7 +89,18 @@ namespace Game.MainScene.Scripts
             int index = Random.Range(0, foodAssets.Length);
             GameObject foodAsset = foodAssets[index];
 
-            GameObject placedAsset = Instantiate(foodAsset, foodAsset.transform.position, foodAsset.transform.rotation);
+            foodAsset = Instantiate(foodAsset, foodAsset.transform.position, foodAsset.transform.rotation);
+            Vector3 cameraForward = Camera.main!.transform.forward;
+
+            Sequence foodAnimation = foodAsset.transform.DOJump(
+                cameraForward, 
+                0.08f, 
+                Random.Range(1, 3), 
+                Random.Range(0.5f, 0.7f));
+
+            foodAnimation.OnComplete(() => {
+                Destroy(foodAsset);
+            });
         }
     }
 }
