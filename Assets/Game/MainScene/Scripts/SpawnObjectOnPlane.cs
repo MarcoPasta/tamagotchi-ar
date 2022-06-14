@@ -9,11 +9,15 @@ using UnityEngine.XR.ARSubsystems;
 namespace Game.MainScene.Scripts
 {
     [RequireComponent(typeof(ARRaycastManager))]
+    [RequireComponent(typeof(ARAnchorManager))]
+    [RequireComponent(typeof(ARPlaneManager))]
     public class SpawnObjectOnPlane : MonoBehaviour
     {
         private ARRaycastManager _raycastManager;
-        private GameObject _spawnedObject;
-
+        private ARAnchorManager _anchorManager;
+        private ARPlaneManager _planeManager;
+        private ARAnchor _spawnedObject;
+        
         [SerializeField]
         private GameObject placeablePrefab;
 
@@ -26,6 +30,8 @@ namespace Game.MainScene.Scripts
         private void Awake()
         {
             _raycastManager = GetComponent<ARRaycastManager>();
+            _anchorManager = GetComponent<ARAnchorManager>();
+            _planeManager = GetComponent<ARPlaneManager>();
         }
 
         private static bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -57,17 +63,20 @@ namespace Game.MainScene.Scripts
             
                 if (_raycastManager.Raycast(touchPosition, _raycastHits, TrackableType.PlaneWithinPolygon))
                 {
-                    var hitPose = _raycastHits[0].pose;
+                    var hit = _raycastHits[0];
+                    var hitPose = hit.pose;
                     // Debug.Log($"Hit pose: {hitPose}.");
 
                     if (_spawnedObject == null)
                     {
-                        // Debug.Log($"Trying to instantiate prefab at {hitPose.position} with rotation {hitPose.rotation}.");
-                        _spawnedObject = Instantiate(placeablePrefab, hitPose.position, hitPose.rotation);
+                        Debug.Log($"Trying to set anchor at {hitPose.position} with rotation {hitPose.rotation}.");
+                        
+                        ARPlane plane = _planeManager.GetPlane(hit.trackableId);
+                        _spawnedObject = _anchorManager.AttachAnchor(plane, hitPose);
                     }
                     else
                     {
-                        // Debug.Log($"Moving {_spawnedObject} to {hitPose.position} with rotation {hitPose.rotation}.");
+                        Debug.Log($"Moving {_spawnedObject} to {hitPose.position} with rotation {hitPose.rotation}.");
                         _spawnedObject.transform.position = hitPose.position;
                         _spawnedObject.transform.rotation = hitPose.rotation;
                     }
