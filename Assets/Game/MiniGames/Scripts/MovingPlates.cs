@@ -1,5 +1,4 @@
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 
 namespace Game.MiniGames.Scripts
@@ -7,60 +6,62 @@ namespace Game.MiniGames.Scripts
     public class MovingPlates : MonoBehaviour
     {
         public GameObject[] groundPlanes;
-        public float spawnSpeed = 2.0f;
-        public float moveSpeed = 0.15f;
-       // [SerializeField] private bool spawned = false;
+        public float spawnSpeed = 1.0f;
+        public float moveSpeed = 0.25f;
+        private float _endValue;
+        public float leftEnd = -0.5f;
+        public float randomRightEndStart = -0.9f;
+        public float randomRightEnd = -0.11f;
         private void Start()
         {
+            getEndValues();
             SpawnPlates();
+        }
+
+        private void getEndValues()
+        {
+            _endValue = groundPlanes[0].transform.position.y + 0.5f;
         }
 
         private void Update()
         {
-            if (groundPlanes[0].transform.position.y != 0) return;
+            if (groundPlanes[0].transform.position.y != _endValue) return;
             MovePlates();
             CheckPosition();
-            // moveSpeed += 0.000001f;
+            moveSpeed += 0.000001f;
         }
 
         private void CheckPosition()
         {
-            foreach (var t in groundPlanes)
+            foreach (var plane in groundPlanes)
             {
-                if (t.transform.position.x < -7.0f)
+                if (plane.transform.position.x < leftEnd)
                 {
-                    t.transform.position = RandomPosition();
+                    plane.transform.position = GetRandomPosition();
                 }
             }
         }
         // return a random position to spawn plate at 
-        private Vector3 RandomPosition()
+        private Vector3 GetRandomPosition()
         {
-            return new Vector3(Random.Range(7.0f, 8.0f), 0, 0);
+            var pos = groundPlanes[0].transform.position;
+            return new Vector3(Random.Range(randomRightEndStart, randomRightEnd), _endValue, pos.z);
         }
 
         private void MovePlates()
         {
-            // use for smoother transisiton
-            groundPlanes[0].transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
-            groundPlanes[1].transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
-            groundPlanes[2].transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
-            groundPlanes[3].transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
-            groundPlanes[4].transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
-            
-            // this is somehow 10 times faster??
-            // foreach (var gp in groundPlanes)
-            // {
-            //     gp.transform.Translate(Vector3.left * (moveSpeed + Time.deltaTime));
-            // }
-            
+            foreach (var plane in groundPlanes)
+            {
+                plane.transform.Translate(Vector3.left * (moveSpeed * Time.deltaTime));
+            }
         }
 
         private void SpawnPlates()
         {
-            foreach (var gp in groundPlanes)
+            foreach (var plane in groundPlanes)
             {
-                gp.transform.DOMove(new Vector3(gp.transform.position.x, 0, 0), spawnSpeed);
+                var pos = plane.transform.position;
+                plane.transform.DOMove(new Vector3(pos.x, _endValue, pos.z), spawnSpeed);
             }
         }
     }
