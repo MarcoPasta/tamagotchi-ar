@@ -11,7 +11,7 @@ public class ScoreCount : MonoBehaviour
     public static int counter = 0; 
     void Update()
     {
-        scoreText.text = "Score: " + counter;
+        scoreText.text = "Score: " + counter + "m";
         
     }
 }
