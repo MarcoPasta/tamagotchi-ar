@@ -14,6 +14,7 @@ namespace Game.MainScene.Scripts
 
         readonly IState _hungerState = new State(1.0, 0, 1.0);
         readonly IState _happinessState = new State(1.0, 0, 1.0);
+        public Animator playerAnimator;
 
         public GameObject[] foodAssets; 
         
@@ -38,13 +39,18 @@ namespace Game.MainScene.Scripts
             {
                 return;
             }
-        
+
             foreach (var state in _states)
             {
                 state.UpdateStateValue();
             }
+
+            if (_hungerState.Value < 0.2)
+            {
+                playerAnimator.Play("hungry");
+            }
         }
-    
+
         private void OnApplicationFocus(bool hasFocus)
         {
             if (hasFocus)
@@ -83,6 +89,8 @@ namespace Game.MainScene.Scripts
 
         public void FeedTamagotchi()
         {
+            playerAnimator.Play("eating");
+
             _hungerState.Value += 0.1;
             Debug.Log("Tamagotchi fed.");
 

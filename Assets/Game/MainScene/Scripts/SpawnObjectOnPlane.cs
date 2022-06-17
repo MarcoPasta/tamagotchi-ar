@@ -17,7 +17,7 @@ namespace Game.MainScene.Scripts
         private ARAnchorManager _anchorManager;
         private ARPlaneManager _planeManager;
         private ARAnchor _spawnedObject;
-        public Animator;
+        public Animator playerAnimator;
 
         [SerializeField]
         private GameObject placeablePrefab;
@@ -80,7 +80,7 @@ namespace Game.MainScene.Scripts
                         Debug.Log($"Moving {_spawnedObject} to {hitPose.position} with rotation {hitPose.rotation}.");
                         _spawnedObject.transform.position = hitPose.position;
                         _spawnedObject.transform.rotation = hitPose.rotation;
-                        playerAnimator.Play("walking")
+                        playerAnimator.Play("walking");
                     }
                 }
             }

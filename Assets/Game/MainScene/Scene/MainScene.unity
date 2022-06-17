@@ -188,8 +188,77 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &348069257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 583.7651
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 358.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -473.9348
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
+        type: 3}
+      propertyPath: m_Name
+      value: guy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
 --- !u!1 &415322096
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +547,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752128563
 GameObject:
@@ -557,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee50f6f8d275c164bae2a176c8b991b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeablePrefab: {fileID: 9104692352846052294, guid: 51167d813c672ea43b1492e14b2eb462,
+  placeablePrefab: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
     type: 3}
   miniGameButton: {fileID: 0}
 --- !u!114 &752128568
@@ -585,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnchorPrefab: {fileID: 5875712105578204662, guid: 8caefef6212b7c844996494a4c223a7c,
+  m_AnchorPrefab: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
     type: 3}
 --- !u!1 &863386988
 GameObject:
@@ -1547,7 +1616,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025578705
 GameObject:
