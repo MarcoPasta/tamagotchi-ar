@@ -12,6 +12,10 @@ namespace Game.MainScene.Scripts
         public void ConfirmSpawn()
         {
             GameObject arSessionOrigin = GameObject.Find("AR Session Origin");
+
+            // should add the mainChar to the objectsToActivate, wenn ichs richtig verstanden hab? 
+            // -> sollte dann in die foreach-Schleife auftauchen und dann enablen, default State ist in Unity auf false.
+            GameObject mainCharacter = GameObject.Find("guy");
             ARPlaneManager planeManager = arSessionOrigin.GetComponent<ARPlaneManager>();
             planeManager.requestedDetectionMode = PlaneDetectionMode.None;
 

@@ -80,6 +80,9 @@ namespace Game.MainScene.Scripts
                         Debug.Log($"Moving {_spawnedObject} to {hitPose.position} with rotation {hitPose.rotation}.");
                         _spawnedObject.transform.position = hitPose.position;
                         _spawnedObject.transform.rotation = hitPose.rotation;
+                        // plays walking animation after each new Position
+                        // to my understanding there is no "interpolation" between the old position and new position
+                        // so Vector3.Lerp ? For an interpolation between two points, so we have some sort of a path
                         playerAnimator.Play("walking");
                     }
                 }
