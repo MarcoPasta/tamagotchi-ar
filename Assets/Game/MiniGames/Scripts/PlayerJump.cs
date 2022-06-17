@@ -23,8 +23,6 @@ namespace Game.MiniGames.Scripts
         {
             CheckForGameEnd();
             keepOnZ2();
-          
-
             if (Input.touchCount > 0 && _canJump)
             {
                 transform.DOLocalJump(new Vector3(0, _maxJumpHeight, _singlePlanePos.position.z), jumpForce, 1, jumpDuration);
@@ -55,21 +53,7 @@ namespace Game.MiniGames.Scripts
                 ScoreCount.counter = 0;
 
                 // TODO: check for character to hit a plane then load mainscene again
-                //if (transform.position.y < 0)
-                //{
-                    // SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
-                //}
-            }
-        }
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.CompareTag("plane"))
-            {
-                if (_canJump == false)
-                {
-                    ScoreCount.counter++;
-                }
-                _canJump = true;
+                // TODO: Confirm Endgame and increase happiness for the amount of meters the gotchis has ran
             }
         }
     }

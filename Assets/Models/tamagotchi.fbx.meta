@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d9b04622970a3ef488aea16b35d13a3f
+guid: ffdad0ef707ddad4bbcd71bf8c7761f9
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -13,8 +13,14 @@ ModelImporter:
       74: 5749023759787010538
     second: Armature|idle1_v2
   - first:
+      74: -8838982627197136138
+    second: Armature|idle2_v1
+  - first:
       74: -7266460347209605577
     second: Armature|mg_jump_v1
+  - first:
+      74: -3603900346466717210
+    second: Armature|mg_jump_v2
   - first:
       74: -2550016320001010816
     second: Armature|walk_v1

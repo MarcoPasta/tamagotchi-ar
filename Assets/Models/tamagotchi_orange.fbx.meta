@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: d9b04622970a3ef488aea16b35d13a3f
+guid: 1ca56608bb1a30c4db638a57c680443b
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 1112863955666078017
-    second: Armature|eating_v3
-  - first:
-      74: -3680969187025796773
-    second: Armature|hungry_v3
-  - first:
-      74: 5749023759787010538
-    second: Armature|idle1_v2
-  - first:
-      74: -7266460347209605577
-    second: Armature|mg_jump_v1
-  - first:
-      74: -2550016320001010816
-    second: Armature|walk_v1
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
