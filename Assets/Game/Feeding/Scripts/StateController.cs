@@ -19,6 +19,7 @@ namespace Game.Feeding.Scripts
         readonly IState _hungerState = new NonDependentState("Hunger", 1.0, 0, 1.0);
         readonly IState _happinessState = new NonDependentState("Happiness", 1.0, 0, 1.0);
         private IState _healthState;
+        public Animator playerAnimator;
 
         public GameObject[] foodAssets; 
         
@@ -57,6 +58,11 @@ namespace Game.Feeding.Scripts
             stateValues.happiness = _happinessState.Value;
             stateValues.hunger = _hungerState.Value;
             stateValues.health = _healthState.Value;
+
+            if (_hungerState.Value < 0.2)
+            {
+                playerAnimator.Play("hungry");
+            }
         }
     
         private void OnApplicationFocus(bool hasFocus)
@@ -108,6 +114,8 @@ namespace Game.Feeding.Scripts
 
         public void FeedTamagotchi()
         {
+            playerAnimator.Play("eating");
+
             _hungerState.Value += 0.1;
             Debug.Log("Tamagotchi fed.");
 
