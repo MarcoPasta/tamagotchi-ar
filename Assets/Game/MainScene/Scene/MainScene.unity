@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -465,6 +465,8 @@ MonoBehaviour:
   feed: {fileID: 1735184835}
   minigame1: {fileID: 1690850696}
   canvas: {fileID: 1906080064}
+  tamagotchi: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
+    type: 3}
 --- !u!4 &747395331
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +492,6 @@ GameObject:
   m_Component:
   - component: {fileID: 752128565}
   - component: {fileID: 752128564}
-  - component: {fileID: 752128566}
   - component: {fileID: 752128568}
   - component: {fileID: 752128567}
   - component: {fileID: 752128569}
@@ -530,21 +531,6 @@ Transform:
   m_Father: {fileID: 415322098}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &752128566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752128563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 1585201990951412, guid: d16dd8da7e4ccbe42b1b4a344a72ecbb,
-    type: 3}
-  m_DetectionMode: 1
 --- !u!114 &752128567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,9 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee50f6f8d275c164bae2a176c8b991b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeablePrefab: {fileID: 9104692352846052294, guid: 51167d813c672ea43b1492e14b2eb462,
-    type: 3}
-  miniGameButton: {fileID: 0}
+  referencePoint: {fileID: 1107484226}
 --- !u!114 &752128568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,11 +566,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 752128563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnchorPrefab: {fileID: 5875712105578204662, guid: 8caefef6212b7c844996494a4c223a7c,
+  m_PlanePrefab: {fileID: 1585201990951412, guid: d16dd8da7e4ccbe42b1b4a344a72ecbb,
     type: 3}
+  m_DetectionMode: 1
 --- !u!1 &863386988
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +796,86 @@ Transform:
   m_Father: {fileID: 752128565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1107484225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422535494649780326, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852028617693579122, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_Name
+      value: ReferencePoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809060140624365646, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ca780040602a5e4e8dfc885024372d0, type: 3}
+--- !u!1 &1107484226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4852028617693579122, guid: 0ca780040602a5e4e8dfc885024372d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107484225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1183827400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1599,9 @@ MonoBehaviour:
   - {fileID: 1690850696}
   objectsToDeactivate:
   - {fileID: 744681249}
+  referencePoint: {fileID: 1107484226}
+  tamagotchi: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
+    type: 3}
 --- !u!4 &2002896615
 Transform:
   m_ObjectHideFlags: 0

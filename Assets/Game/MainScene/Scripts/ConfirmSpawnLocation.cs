@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -9,13 +9,16 @@ namespace Game.MainScene.Scripts
     {
         public GameObject[] objectsToActivate;
         public GameObject[] objectsToDeactivate;
+        public GameObject referencePoint;
+        public GameObject tamagotchi;
+
         public void ConfirmSpawn()
         {
             GameObject arSessionOrigin = GameObject.Find("AR Session Origin");
             ARPlaneManager planeManager = arSessionOrigin.GetComponent<ARPlaneManager>();
             planeManager.requestedDetectionMode = PlaneDetectionMode.None;
 
-            arSessionOrigin.GetComponent<SpawnObjectOnPlane>().enabled = false;
+            arSessionOrigin.GetComponent<SetReferencePoint>().enabled = false;
             
             foreach (var plane in planeManager.trackables)
             {
@@ -31,6 +34,9 @@ namespace Game.MainScene.Scripts
             {
                 objectToDeactivate.SetActive(false);
             }
+            Debug.Log("placing Tamagotchi");
+            Instantiate(tamagotchi, referencePoint.transform);
+            referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
         }
     }
 }
