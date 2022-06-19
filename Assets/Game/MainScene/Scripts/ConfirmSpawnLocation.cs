@@ -7,36 +7,62 @@ namespace Game.MainScene.Scripts
 {
     public class ConfirmSpawnLocation : MonoBehaviour
     {
-        public GameObject[] objectsToActivate;
-        public GameObject[] objectsToDeactivate;
+        public GameObject miniGameButton;
+        public GameObject backFromMiniGameButton;
+        public GameObject confirmSpawnLocationButton;
+        private bool _confirmed = false;
+   
         public GameObject referencePoint;
-        public GameObject tamagotchi;
+
+        public LevelManager levelOrder;
+        private int _levelIndex = 0;
+        private GameObject _loadedLevel;
 
         public void ConfirmSpawn()
         {
-            GameObject arSessionOrigin = GameObject.Find("AR Session Origin");
-            ARPlaneManager planeManager = arSessionOrigin.GetComponent<ARPlaneManager>();
-            planeManager.requestedDetectionMode = PlaneDetectionMode.None;
+            if (!_confirmed)
+            {
+                GameObject arSessionOrigin = GameObject.Find("AR Session Origin");
+                ARPlaneManager planeManager = arSessionOrigin.GetComponent<ARPlaneManager>();
+                planeManager.requestedDetectionMode = PlaneDetectionMode.None;
 
-            arSessionOrigin.GetComponent<SetReferencePoint>().enabled = false;
+                arSessionOrigin.GetComponent<SetReferencePoint>().enabled = false;
             
-            foreach (var plane in planeManager.trackables)
-            {
-                plane.gameObject.SetActive(false);
+                foreach (var plane in planeManager.trackables)
+                {
+                    plane.gameObject.SetActive(false);
+                }
+                Debug.Log("placing Tamagotchi");
+                confirmSpawnLocationButton.SetActive(false);
+                miniGameButton.SetActive(true);
+                referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
+                _confirmed = true;
             }
-            
-            foreach (var objectToActivate in objectsToActivate)
-            {
-                objectToActivate.SetActive(true);
-            }
-            
-            foreach (var objectToDeactivate in objectsToDeactivate)
-            {
-                objectToDeactivate.SetActive(false);
-            }
-            Debug.Log("placing Tamagotchi");
-            Instantiate(tamagotchi, referencePoint.transform);
-            referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
+            BuildLevel();
+        }
+
+        private void BuildLevel()
+        {
+            Destroy(_loadedLevel);
+            Debug.Log("Spawn Position: " + referencePoint.transform.position);
+            _loadedLevel = Instantiate(levelOrder.levelLoadingOrder[_levelIndex], referencePoint.transform.position, Quaternion.identity);
+            _loadedLevel.transform.eulerAngles= Vector3.zero;
+        }
+
+        public void BuildMiniGame()
+        {
+            _levelIndex++;
+            backFromMiniGameButton.SetActive(true);
+            miniGameButton.SetActive(false);
+            BuildLevel();
+        }  
+        
+        public void BuildFeedingGame()
+        {
+            _levelIndex--;
+            backFromMiniGameButton.SetActive(false);
+            miniGameButton.SetActive(true);
+            BuildLevel();
         }
     }
 }
