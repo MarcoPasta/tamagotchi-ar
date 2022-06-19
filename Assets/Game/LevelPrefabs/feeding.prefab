@@ -555,6 +555,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5389239016790722115}
     m_Modifications:
+    - target: {fileID: 1213571913, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0f389b577b345d446ad7288ce8766da7, type: 2}
     - target: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
         type: 3}
       propertyPath: m_RootOrder
@@ -615,7 +619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: guy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1213571910, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
+    - {fileID: 1213571909, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
+    - {fileID: 1213571911, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c9e818806db0c7e4b93eec0447c21363, type: 3}
 --- !u!4 &427186937276458124 stripped
 Transform:
