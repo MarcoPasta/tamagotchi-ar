@@ -9,7 +9,7 @@ namespace Game.MiniGames.Scripts
         public GameObject[] groundPlanes;
         public float spawnSpeed = 1.0f;
         public float moveSpeed = 0.25f;
-        public static float endValue;
+        public static float EndValue;
         public float leftEnd = -0.5f;
         public float randomRightEndStart = -0.9f;
         public float randomRightEnd = -0.11f;
@@ -17,18 +17,18 @@ namespace Game.MiniGames.Scripts
         public float planeSpeedIncrease = 0.0001f;
         private void Start()
         {
-            getEndValues();
+            GetEndValues();
             SpawnPlates();
         }
 
-        private void getEndValues()
+        private void GetEndValues()
         {
-            endValue = groundPlanes[0].transform.position.y + 1f;
+            EndValue = groundPlanes[0].transform.position.y + 1f;
         }
 
         private void Update()
         {
-            if (groundPlanes[0].transform.position.y != endValue) return;
+            if (groundPlanes[0].transform.position.y != EndValue) return;
             MovePlates();
             CheckPosition();
             IncreaseScoreInMeters();
@@ -56,7 +56,7 @@ namespace Game.MiniGames.Scripts
         private Vector3 GetRandomPosition()
         {
             var pos = groundPlanes[0].transform.position;
-            return new Vector3(Random.Range(randomRightEndStart, randomRightEnd), endValue, pos.z);
+            return new Vector3(Random.Range(randomRightEndStart, randomRightEnd), EndValue, pos.z);
         }
 
         private void MovePlates()
@@ -72,7 +72,7 @@ namespace Game.MiniGames.Scripts
             foreach (var plane in groundPlanes)
             {
                 var pos = plane.transform.position;
-                plane.transform.DOMove(new Vector3(pos.x, endValue, pos.z), spawnSpeed);
+                plane.transform.DOMove(new Vector3(pos.x, EndValue, pos.z), spawnSpeed);
             }
         }
     }
