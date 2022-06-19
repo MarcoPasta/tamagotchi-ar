@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateValues: {fileID: 11400000, guid: 17e1263f532c84c47b8812b7690948c7, type: 2}
+  playerAnimator: {fileID: 13448124}
   foodAssets:
   - {fileID: 8313099899637826361, guid: 720f85af5d7765b4185de3d107c873a2, type: 3}
   - {fileID: 5875712105578204662, guid: 8caefef6212b7c844996494a4c223a7c, type: 3}
@@ -781,3 +782,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 617499559}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3432857035863975742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3432857035397475481, guid: c9e818806db0c7e4b93eec0447c21363,
+    type: 3}
+  m_PrefabInstance: {fileID: 617499559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &13448124
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432857035863975742}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f389b577b345d446ad7288ce8766da7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
