@@ -14,6 +14,7 @@ namespace Game.MiniGames.Scripts
         public float randomRightEndStart = -0.9f;
         public float randomRightEnd = -0.11f;
         private float _counterHelper = 0;
+        public float planeSpeedIncrease = 0.0001f;
         private void Start()
         {
             getEndValues();
@@ -31,7 +32,7 @@ namespace Game.MiniGames.Scripts
             MovePlates();
             CheckPosition();
             IncreaseScoreInMeters();
-            moveSpeed += 0.000001f;
+            moveSpeed += planeSpeedIncrease;
             
         }
 
