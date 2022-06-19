@@ -20,13 +20,17 @@ namespace Game.MainScene.Scripts
         private void Awake()
         {
             _raycastManager = GetComponent<ARRaycastManager>();
+            referencePoint.transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        private static bool TryGetTouchPosition(out Vector2 touchPosition)
+        private static bool TryGetTouchPosition(out Vector2 touchPosition, GameObject referencePoint)
         {
             if (Input.touchCount > 0)
             {
                 touchPosition = Input.GetTouch(0).position;
+                referencePoint.transform.GetChild(0).gameObject.SetActive(true);
+
+                Debug.Log(touchPosition + " current Touchposition");
                 return true;
             }
 
@@ -37,7 +41,7 @@ namespace Game.MainScene.Scripts
         // Update is called once per frame
         private void Update()
         {
-            if (!TryGetTouchPosition(out Vector2 touchPosition))
+            if (!TryGetTouchPosition(out Vector2 touchPosition, referencePoint))
             {
                 return;
             }
@@ -48,6 +52,7 @@ namespace Game.MainScene.Scripts
                 var hitPose = hit.pose;
 
                 referencePoint.transform.position = hitPose.position;
+                Debug.Log("referencePoint Position" + referencePoint.transform.position);
             }
         }
     }

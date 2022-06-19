@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -465,6 +465,8 @@ MonoBehaviour:
   feed: {fileID: 1735184835}
   minigame1: {fileID: 1690850696}
   canvas: {fileID: 1906080064}
+  tamagotchi: {fileID: 1222034760245297104, guid: c9e818806db0c7e4b93eec0447c21363,
+    type: 3}
 --- !u!4 &747395331
 Transform:
   m_ObjectHideFlags: 0
@@ -801,6 +803,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 422535494649780326, guid: 0ca780040602a5e4e8dfc885024372d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4852028617693579122, guid: 0ca780040602a5e4e8dfc885024372d0,
         type: 3}
       propertyPath: m_Name
