@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 namespace Game.MiniGames.Scripts
@@ -22,38 +23,37 @@ namespace Game.MiniGames.Scripts
         void Update()
         {
             CheckForGameEnd();
-            keepOnZ2();
             if (Input.touchCount > 0 && _canJump)
             {
-                transform.DOLocalJump(new Vector3(0, _maxJumpHeight, _singlePlanePos.position.z), jumpForce, 1, jumpDuration);
+                transform.DOLocalJump(new Vector3(0, _maxJumpHeight, 0), jumpForce, 1, jumpDuration);
                 _canJump = false;
             }
 
             // for debugging
             if (Input.GetKeyDown(KeyCode.Space) && _canJump)
             {
-                transform.DOLocalJump(new Vector3(0, _maxJumpHeight, _singlePlanePos.position.z), jumpForce, 1, jumpDuration);
+                transform.DOLocalJump(new Vector3(0, _maxJumpHeight, 0), jumpForce, 1, jumpDuration);
                 _canJump = false;
             }
         }
 
-        private void keepOnZ2()
-        {
-            var transform1 = transform;
-            var position = transform1.position;
-            position = new Vector3(position.x, position.y, 2);
-            transform1.position = position;
-        }
-
         private void CheckForGameEnd()
         {
-            if (transform.position.y < _singlePlanePos.position.y)
+            if (transform.position.y < _singlePlanePos.position.y - 10f)
             {
                 _canJump = false;
                 ScoreCount.counter = 0;
 
                 // TODO: check for character to hit a plane then load mainscene again
                 // TODO: Confirm Endgame and increase happiness for the amount of meters the gotchis has ran
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.CompareTag("plane"))
+            {
+                _canJump = true;
             }
         }
     }

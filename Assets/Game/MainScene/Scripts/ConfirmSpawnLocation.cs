@@ -10,7 +10,7 @@ namespace Game.MainScene.Scripts
         public GameObject miniGameButton;
         public GameObject backFromMiniGameButton;
         public GameObject confirmSpawnLocationButton;
-        private bool _confirmed;
+        private bool _confirmed = false;
    
         public GameObject referencePoint;
 
@@ -33,20 +33,20 @@ namespace Game.MainScene.Scripts
                     plane.gameObject.SetActive(false);
                 }
                 Debug.Log("placing Tamagotchi");
-                // Instantiate(tamagotchi, referencePoint.transform);
-                miniGameButton.SetActive(true);
                 confirmSpawnLocationButton.SetActive(false);
-                BuildLevel();
+                miniGameButton.SetActive(true);
                 referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
                 _confirmed = true;
             }
-            
+            BuildLevel();
         }
 
         private void BuildLevel()
         {
             Destroy(_loadedLevel);
-            _loadedLevel = Instantiate(levelOrder.levelLoadingOrder[_levelIndex], referencePoint.transform);
+            Debug.Log("Spawn Position: " + referencePoint.transform.position);
+            _loadedLevel = Instantiate(levelOrder.levelLoadingOrder[_levelIndex], referencePoint.transform.position, Quaternion.identity);
+            _loadedLevel.transform.eulerAngles= Vector3.zero;
         }
 
         public void BuildMiniGame()
