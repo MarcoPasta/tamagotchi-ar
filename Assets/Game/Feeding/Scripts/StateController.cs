@@ -10,6 +10,7 @@ namespace Game.Feeding.Scripts
 {
     public class StateController : MonoBehaviour
     {
+        public Animator playerAnimator;
         private List<IState> _states;
         private int _minutesPassedSinceLastPlayed;
         private const double DecreasePerTick = 0.000001;
@@ -48,7 +49,7 @@ namespace Game.Feeding.Scripts
             {
                 return;
             }
-        
+
             foreach (var state in _states)
             {
                 state.UpdateStateValue(DecreasePerTick);
@@ -57,8 +58,13 @@ namespace Game.Feeding.Scripts
             stateValues.happiness = _happinessState.Value;
             stateValues.hunger = _hungerState.Value;
             stateValues.health = _healthState.Value;
+
+            if (_hungerState.Value < 0.5)
+            {
+                playerAnimator.Play("hungry");
+            }
         }
-    
+
         private void OnApplicationFocus(bool hasFocus)
         {
             if (hasFocus)
@@ -108,6 +114,7 @@ namespace Game.Feeding.Scripts
 
         public void FeedTamagotchi()
         {
+            playerAnimator.Play("eating");
             _hungerState.Value += 0.1;
             Debug.Log("Tamagotchi fed.");
 
