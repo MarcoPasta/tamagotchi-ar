@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95db37fc613dfeb4b9217bba9a0a858b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 3893690443315439812}
   stateValues: {fileID: 11400000, guid: 17e1263f532c84c47b8812b7690948c7, type: 2}
   foodAssets:
   - {fileID: 8313099899637826361, guid: 720f85af5d7765b4185de3d107c873a2, type: 3}

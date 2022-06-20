@@ -1555,29 +1555,23 @@ MonoBehaviour:
   jumpFloats: 2
   jumpDuration: 0.6
   jumpForce: 0.01
-  playerAnimator: {fileID: 1346055882}
+  playerAnimator: {fileID: 616110365}
   moveSpeed: 0
   jumpForward: 0
---- !u!4 &1703832579543492877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
-    type: 3}
-  m_PrefabInstance: {fileID: 1317468872595457574}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4461769517197879999 stripped
+--- !u!1 &1140984301068728997 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3432857035397475481, guid: c9e818806db0c7e4b93eec0447c21363,
+  m_CorrespondingSourceObject: {fileID: 2133863828600945795, guid: c9e818806db0c7e4b93eec0447c21363,
     type: 3}
   m_PrefabInstance: {fileID: 1317468872595457574}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1346055882
+--- !u!95 &616110365
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461769517197879999}
+  m_GameObject: {fileID: 1140984301068728997}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 40dfdb0014ca97d4bb62ec4d17d5735a, type: 2}
@@ -1590,3 +1584,9 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1703832579543492877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 427186937892351787, guid: c9e818806db0c7e4b93eec0447c21363,
+    type: 3}
+  m_PrefabInstance: {fileID: 1317468872595457574}
+  m_PrefabAsset: {fileID: 0}
