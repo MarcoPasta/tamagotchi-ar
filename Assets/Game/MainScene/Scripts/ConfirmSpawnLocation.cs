@@ -7,11 +7,12 @@ namespace Game.MainScene.Scripts
 {
     public class ConfirmSpawnLocation : MonoBehaviour
     {
+        public GameObject dialog;
         public GameObject miniGameButton;
         public GameObject backFromMiniGameButton;
         public GameObject confirmSpawnLocationButton;
         private bool _confirmed = false;
-   
+
         public GameObject referencePoint;
 
         public LevelManager levelOrder;
@@ -27,7 +28,7 @@ namespace Game.MainScene.Scripts
                 planeManager.requestedDetectionMode = PlaneDetectionMode.None;
 
                 arSessionOrigin.GetComponent<SetReferencePoint>().enabled = false;
-            
+
                 foreach (var plane in planeManager.trackables)
                 {
                     plane.gameObject.SetActive(false);
@@ -38,6 +39,7 @@ namespace Game.MainScene.Scripts
                 referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
                 _confirmed = true;
             }
+            dialog.SetActive(false);
             BuildLevel();
         }
 
@@ -46,7 +48,7 @@ namespace Game.MainScene.Scripts
             Destroy(_loadedLevel);
             Debug.Log("Spawn Position: " + referencePoint.transform.position);
             _loadedLevel = Instantiate(levelOrder.levelLoadingOrder[_levelIndex], referencePoint.transform.position, Quaternion.identity);
-            _loadedLevel.transform.eulerAngles= Vector3.zero;
+            _loadedLevel.transform.eulerAngles = Vector3.zero;
         }
 
         public void BuildMiniGame()
@@ -55,8 +57,8 @@ namespace Game.MainScene.Scripts
             backFromMiniGameButton.SetActive(true);
             miniGameButton.SetActive(false);
             BuildLevel();
-        }  
-        
+        }
+
         public void BuildFeedingGame()
         {
             _levelIndex--;
