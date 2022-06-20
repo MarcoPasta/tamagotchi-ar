@@ -1,5 +1,7 @@
 using System;
 using DG.Tweening;
+using Game.Feeding.Scripts;
+using Modules.State;
 using UnityEngine;
 namespace Game.MiniGames.Scripts
 {
@@ -17,14 +19,19 @@ namespace Game.MiniGames.Scripts
         public float moveSpeed;
         public float jumpForward;
         private bool _gameStart;
-        public static bool gameEnd = false;
+        public static bool GameEnd = false;
 
+        [SerializeField]
+        private StateValues stateValues;
+        
         private void Start()
         {
             _maxJumpHeight = transform.position.y + jumpFloats;
             _singlePlanePos = planeContainer[0];
             playerAnimator.Play("minigame_jump_1");
             _gameStart = true;
+            GameEnd = false;
+            ScoreCount.counter = 0;
         }
 
         void Update()
@@ -66,8 +73,11 @@ namespace Game.MiniGames.Scripts
             if (transform.position.y < _singlePlanePos.position.y - 2.30f)
             {
                 _canJump = false;
-                ScoreCount.counter = 0;
-                gameEnd = true;
+                GameEnd = true;
+
+                double newHappinessValue = stateValues.happiness + (double) ScoreCount.counter / 1000;
+                
+                StateSerializer.SaveStateByName("Happiness", newHappinessValue);
             }
         }
 
@@ -90,8 +100,15 @@ namespace Game.MiniGames.Scripts
             if (collision.gameObject.CompareTag("plane") && _singlePlanePos.position.y == MovingPlates.EndValue)
             {
                 playerAnimator.Play("walking");
-                transform.position = new Vector3(transform.position.x - (moveSpeed * Time.deltaTime),
-                    transform.position.y, transform.position.z);
+                var playerTransform = transform;
+                var position = playerTransform.position;
+                
+                position = new Vector3(
+                    position.x - (moveSpeed * Time.deltaTime),
+                    position.y, 
+                    position.z);
+                
+                playerTransform.position = position;
             }
         }
     }

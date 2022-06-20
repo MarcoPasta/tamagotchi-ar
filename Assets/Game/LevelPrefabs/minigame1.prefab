@@ -1558,6 +1558,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 616110365}
   moveSpeed: 0
   jumpForward: 0
+  stateValues: {fileID: 11400000, guid: 17e1263f532c84c47b8812b7690948c7, type: 2}
 --- !u!1 &1140984301068728997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2133863828600945795, guid: c9e818806db0c7e4b93eec0447c21363,

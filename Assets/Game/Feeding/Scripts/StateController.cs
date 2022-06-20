@@ -102,7 +102,7 @@ namespace Game.Feeding.Scripts
         
             foreach (var state in _states)
             {
-                state.Value = CalculateStateValueDecrease(_minutesPassedSinceLastPlayed, state.Value);
+                state.Value = CalculateStateValueDecrease(_minutesPassedSinceLastPlayed, StateSerializer.Load(state));
             }
         }
 
