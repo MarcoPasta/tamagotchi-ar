@@ -39,12 +39,12 @@ namespace Game.MainScene.Scripts
                 referencePoint.transform.GetChild(0).gameObject.SetActive(false); // set false so the orange won't be visible in here anymore
                 _confirmed = true;
             }
-            dialog.SetActive(false);
             BuildLevel();
         }
 
         private void BuildLevel()
         {
+            dialog.SetActive(false);
             Destroy(_loadedLevel);
             Debug.Log("Spawn Position: " + referencePoint.transform.position);
             _loadedLevel = Instantiate(levelOrder.levelLoadingOrder[_levelIndex], referencePoint.transform.position, Quaternion.identity);
