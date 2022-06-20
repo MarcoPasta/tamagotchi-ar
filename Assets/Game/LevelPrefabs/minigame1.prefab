@@ -1552,9 +1552,9 @@ MonoBehaviour:
   - {fileID: 6722159348890093806}
   - {fileID: 6722159348437830781}
   - {fileID: 6722159348214614135}
-  jumpFloats: 2
+  jumpFloats: 2.5
   jumpDuration: 0.6
-  jumpForce: 0.01
+  jumpForce: 0.03
   playerAnimator: {fileID: 616110365}
   moveSpeed: 0
   jumpForward: 0

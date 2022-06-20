@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/MainScene/Scene/MainScene.unity
     guid: d8de77473f17a904aa86a6ff13d49f6a
-  - enabled: 1
-    path: Assets/Game/MiniGames/Scenes/minigame1.unity
-    guid: d8a6d1cee04b9b046984aab42cb4f49d
-  - enabled: 1
-    path: Assets/Game/Feeding/Scene/Feeding.unity
-    guid: aa3f13da2944d5b4f82b0279b86f5ad5
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

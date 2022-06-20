@@ -17,6 +17,7 @@ namespace Game.MiniGames.Scripts
         public float moveSpeed;
         public float jumpForward;
         private bool _gameStart;
+        public static bool gameEnd = false;
 
         private void Start()
         {
@@ -66,18 +67,7 @@ namespace Game.MiniGames.Scripts
             {
                 _canJump = false;
                 ScoreCount.counter = 0;
-                // if (SpawnObjectOnPlane.spawnedObject == null)
-                // {
-                //     // Debug.Log("very fuck you");
-                // }
-                // var anchorYPos = SpawnObjectOnPlane.spawnedObject.transform.position.y;
-                // if (transform.position.y >= anchorYPos)
-                // {
-                //     Debug.Log("GameOver!!!");
-                // }
-
-                // TODO: check for character to hit a plane then load mainscene again
-                // TODO: Confirm Endgame and increase happiness for the amount of meters the gotchis has ran
+                gameEnd = true;
             }
         }
 
