@@ -29,6 +29,7 @@ namespace Game.MiniGames.Scripts
         private void Update()
         {
             if (groundPlanes[0].transform.position.y != EndValue) return;
+            if (PlayerJump.GameEnd) return;
             MovePlates();
             CheckPosition();
             IncreaseScoreInMeters();

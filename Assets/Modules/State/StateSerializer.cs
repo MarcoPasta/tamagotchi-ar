@@ -13,5 +13,15 @@ namespace Modules.State
         {
             return PlayerPrefs.GetFloat(state.Name, 1);
         }
+
+        public static void SaveStateByName(string name, double value)
+        {
+            PlayerPrefs.SetFloat(name, (float)value);
+        }
+
+        public static double LoadStateByName(string name)
+        {
+            return PlayerPrefs.GetFloat(name, 1);
+        }
     }
 }
