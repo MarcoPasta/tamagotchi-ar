@@ -28,7 +28,7 @@ namespace Game.MiniGames.Scripts
 
         void Update()
         {
-            if (_singlePlanePos.position.y != MovingPlates.endValue)
+            if (_singlePlanePos.position.y != MovingPlates.EndValue)
             {
                 return;
             }
@@ -97,7 +97,7 @@ namespace Game.MiniGames.Scripts
 
         private void OnCollisionStay(Collision collision)
         {
-            if (collision.gameObject.CompareTag("plane") && _singlePlanePos.position.y == MovingPlates.endValue)
+            if (collision.gameObject.CompareTag("plane") && _singlePlanePos.position.y == MovingPlates.EndValue)
             {
                 playerAnimator.Play("walking");
                 transform.position = new Vector3(transform.position.x - (moveSpeed * Time.deltaTime),

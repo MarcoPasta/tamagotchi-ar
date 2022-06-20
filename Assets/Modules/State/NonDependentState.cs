@@ -6,7 +6,7 @@ namespace Modules.State
     /// Class <c>State</c> represents a value between <c>RangeMin</c> and <c>RangeMax</c>, which can be increased, decreased,
     /// or be dependent on other state values.
     /// </summary>
-    public class State : BaseState
+    public class NonDependentState : BaseState
     {
         /// <inheritdoc />
         public override double RangeMin { get; }
@@ -14,7 +14,6 @@ namespace Modules.State
         /// <inheritdoc />
         public override double RangeMax { get; }
 
-        /// <inheritdoc />
         public override List<IStateDependency> Dependencies { get; }
 
         /// <summary>
@@ -23,20 +22,7 @@ namespace Modules.State
         /// </summary>
         public override void UpdateStateValue(double decrease = 0)
         {
-            if (Dependencies == null  || Dependencies.Count == 0)
-            {
-                return;
-            }
-
-            double newStateValue = 0;
-            
-            foreach (IStateDependency stateDependency in Dependencies)
-            {
-                double weightedDependencyValue = stateDependency.State.Value * stateDependency.Weighting;
-                newStateValue += weightedDependencyValue;
-            }
-
-            Value = newStateValue;
+            Value -= decrease;
         }
 
         /// <summary>
@@ -46,14 +32,13 @@ namespace Modules.State
         /// <param name="value">The starting value.</param>
         /// <param name="rangeMin">The lowest possible state value.</param>
         /// <param name="rangeMax">The highest possible state value.</param>
-        /// <param name="dependencies">A list of <c>IStateDependency</c> instances</param>
-        public State(string name, double value, double rangeMin, double rangeMax, List<IStateDependency> dependencies = null)
+        public NonDependentState(string name, double value, double rangeMin, double rangeMax)
         {
             Name = name;
             RangeMin = rangeMin;
             RangeMax = rangeMax;
             Value = value;
-            Dependencies = dependencies;
+            Dependencies = null;
         }
     }
 }

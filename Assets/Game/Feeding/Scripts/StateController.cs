@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Modules.State;
 using Modules.Timestamp;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace Game.MainScene.Scripts
+namespace Game.Feeding.Scripts
 {
     public class StateController : MonoBehaviour
     {
@@ -12,8 +14,11 @@ namespace Game.MainScene.Scripts
         private int _minutesPassedSinceLastPlayed;
         private const double DecreasePerTick = 0.000001;
 
-        readonly IState _hungerState = new State(1.0, 0, 1.0);
-        readonly IState _happinessState = new State(1.0, 0, 1.0);
+        [SerializeField] private StateValues stateValues;
+
+        readonly IState _hungerState = new NonDependentState("Hunger", 1.0, 0, 1.0);
+        readonly IState _happinessState = new NonDependentState("Happiness", 1.0, 0, 1.0);
+        private IState _healthState;
 
         public GameObject[] foodAssets; 
         
@@ -22,13 +27,18 @@ namespace Game.MainScene.Scripts
         {
             List<IStateDependency> healthStateDependencies = new List<IStateDependency>
             {
-                new StateDependency(_hungerState, 0.5), 
+                new StateDependency(_hungerState, 0.5),
                 new StateDependency(_happinessState, 0.5)
             };
         
-            IState healthState = new State(1.0, 0, 1.0, healthStateDependencies);
+            _healthState = new State("Health",1.0, 0, 1.0, healthStateDependencies);
 
-            _states = new List<IState> { _hungerState, _happinessState, healthState };
+            _states = new List<IState> { _hungerState, _happinessState, _healthState };
+
+            foreach (var state in _states)
+            {
+                state.Value = StateSerializer.Load(state);
+            }
         }
 
         // Update is called once per frame
@@ -41,8 +51,12 @@ namespace Game.MainScene.Scripts
         
             foreach (var state in _states)
             {
-                state.UpdateStateValue();
+                state.UpdateStateValue(DecreasePerTick);
             }
+
+            stateValues.happiness = _happinessState.Value;
+            stateValues.hunger = _hungerState.Value;
+            stateValues.health = _healthState.Value;
         }
     
         private void OnApplicationFocus(bool hasFocus)
@@ -56,9 +70,19 @@ namespace Game.MainScene.Scripts
             HandleGameQuit();
         }
 
-        private static void HandleGameQuit()
+        private void OnDestroy()
+        {
+            HandleGameQuit();
+        }
+
+        private void HandleGameQuit()
         {
             Timestamp.Save();
+            
+            foreach (var state in _states)
+            {
+                StateSerializer.Save(state);
+            }
         }
 
         private void HandleGameReturn()
@@ -72,13 +96,14 @@ namespace Game.MainScene.Scripts
         
             foreach (var state in _states)
             {
-                state.Value -= CalculateStateValueDecrease(_minutesPassedSinceLastPlayed);
+                state.Value = CalculateStateValueDecrease(_minutesPassedSinceLastPlayed, state.Value);
             }
         }
 
-        private static double CalculateStateValueDecrease(int minutes)
+        private static double CalculateStateValueDecrease(int minutes, double stateValue)
         {
-            return minutes * 60 * 60 * DecreasePerTick;
+            double valueToDecreaseBy = minutes * 60 * 60 * DecreasePerTick;
+            return stateValue - valueToDecreaseBy;
         }
 
         public void FeedTamagotchi()
