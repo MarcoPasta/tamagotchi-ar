@@ -202,7 +202,7 @@ ModelImporter:
       name: Armature|mg_jump_v2
       takeName: Armature|mg_jump_v2
       internalID: 0
-      firstFrame: 0
+      firstFrame: 7
       lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
