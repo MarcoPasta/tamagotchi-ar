@@ -21,7 +21,7 @@ namespace Modules.State
         /// This method updates the state value by iterating through all the <c>Dependencies</c>,
         /// adding all the weighted dependency's states together.
         /// </summary>
-        public override void UpdateStateValue()
+        public override void UpdateStateValue(double decrease = 0)
         {
             if (Dependencies == null  || Dependencies.Count == 0)
             {
@@ -42,12 +42,14 @@ namespace Modules.State
         /// <summary>
         /// This constructor initializes a new State with the given arguments.
         /// </summary>
+        /// <param name="name">The name of the state.</param>
         /// <param name="value">The starting value.</param>
         /// <param name="rangeMin">The lowest possible state value.</param>
         /// <param name="rangeMax">The highest possible state value.</param>
         /// <param name="dependencies">A list of <c>IStateDependency</c> instances</param>
-        public State(double value, double rangeMin, double rangeMax, List<IStateDependency> dependencies = null)
+        public State(string name, double value, double rangeMin, double rangeMax, List<IStateDependency> dependencies = null)
         {
+            Name = name;
             RangeMin = rangeMin;
             RangeMax = rangeMax;
             Value = value;

@@ -10,6 +10,9 @@ namespace Modules.State
     public abstract class BaseState : IState
     {
         /// <inheritdoc />
+        public string Name { get; set; }
+
+        /// <inheritdoc />
         public abstract double RangeMin { get; }
 
         /// <inheritdoc />
@@ -28,8 +31,20 @@ namespace Modules.State
             set => _stateValue = Helpers.Clamp(value, RangeMin, RangeMax);
         }
 
-
         /// <inheritdoc />
-        public abstract void UpdateStateValue();
+        public abstract void UpdateStateValue(double decrease = 0);
+
+        /// <summary>
+        /// Checks if a state has dependencies and returns a boolean accordingly.
+        /// </summary>
+        public bool HasDependencies()
+        {
+            if (Dependencies == null  || Dependencies.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
